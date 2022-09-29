@@ -45,6 +45,8 @@ sonarqube {
     property "sonar.projectKey", "SasanLabs_VulnerableApp"
     property "sonar.organization", "sasanlabs"
     property "sonar.host.url", "https://sonarcloud.io"
+    property 'sonar.dependencyCheck.jsonReportPath', 'build/reports/dependency-check-report.json'
+    property 'sonar.dependencyCheck.htmlReportPath', 'build/reports/dependency-check-report.html'
   }
 }
 
