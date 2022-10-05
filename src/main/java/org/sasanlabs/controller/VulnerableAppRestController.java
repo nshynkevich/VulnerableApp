@@ -19,6 +19,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.*;
+import java.io.File;
+import static java.nio.charset.StandardCharsets.*;
+
 /** @author KSASAN preetkaran20@gmail.com */
 @RestController
 public class VulnerableAppRestController {
@@ -118,17 +122,14 @@ public class VulnerableAppRestController {
      * @throws JsonProcessingException
      * @throws UnknownHostException
      */
-    @RequestMapping("/sitemap.xml")
+    /*@RequestMapping("/sitemap.xml")
     public String sitemapForPassiveScanners() throws JsonProcessingException, UnknownHostException {
+
         List<AllEndPointsResponseBean> allEndPoints = allEndPointsJsonResponse();
-        StringBuilder xmlBuilder =
-                new StringBuilder(
-                        FrameworkConstants.GENERAL_XML_HEADER
+        StringBuilder xmlBuilder = new StringBuilder(FrameworkConstants.GENERAL_XML_HEADER
                                 + FrameworkConstants.SITEMAP_URLSET_TAG_START);
         for (AllEndPointsResponseBean endPoint : allEndPoints) {
-            endPoint.getLevelDescriptionSet()
-                    .forEach(
-                            level -> {
+            endPoint.getLevelDescriptionSet().forEach(level -> {
                                 xmlBuilder
                                         .append(FrameworkConstants.SITEMAP_URL_TAG_START)
                                         .append(FrameworkConstants.NEXT_LINE)
@@ -153,5 +154,13 @@ public class VulnerableAppRestController {
         }
         xmlBuilder.append(FrameworkConstants.SITEMAP_URLSET_TAG_END);
         return xmlBuilder.toString();
+    }*/
+
+    @RequestMapping("/sitemap.xml")
+    public String sitemapForPassiveScanners() throws JsonProcessingException, UnknownHostException, IOException {
+        String path = "sitemap.xml";
+
+        byte[] encoded = Files.readAllBytes(Paths.get(path));
+        return new String(encoded, encoding);
     }
 }
