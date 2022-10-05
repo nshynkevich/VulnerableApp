@@ -164,5 +164,6 @@ public class VulnerableAppRestController {
         Path filePath = Path.of("./sitemap.xml");
 
         String content = Files.readString(filePath);
+        return content;
     }
 }
