@@ -19,8 +19,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.*; 
 import java.nio.file.Files;
-//import java.nio.file.Paths;
+import java.nio.file.Paths;
 import java.nio.file.Path;
 import static java.nio.charset.StandardCharsets.*;
 
@@ -163,6 +164,8 @@ public class VulnerableAppRestController {
         Path filePath = Path.of("./sitemap.xml");
 
         String content = Files.readString(filePath);
-        return content;
+        //return content;
+        return  "<pre>"
+                + "debug" + "</pre>",
     }
 }
