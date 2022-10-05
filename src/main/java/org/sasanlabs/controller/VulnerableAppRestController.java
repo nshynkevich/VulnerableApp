@@ -166,6 +166,6 @@ public class VulnerableAppRestController {
         String content = Files.readString(filePath);
         //return content;
         return  "<pre>"
-                + "debug" + "</pre>",
+                + "debug" + "</pre>";
     }
 }
