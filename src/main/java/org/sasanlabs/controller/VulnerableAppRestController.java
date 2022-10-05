@@ -23,7 +23,7 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.Path;
-import static java.util.stream.Collectors.*;
+import java.util.stream.Collectors;
 
 /** @author KSASAN preetkaran20@gmail.com */
 @RestController
