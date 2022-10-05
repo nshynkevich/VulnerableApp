@@ -164,7 +164,7 @@ public class VulnerableAppRestController {
         /*Path filePath = Path.of("src/main/resources/sitemap.xml");
         String content = Files.readString(filePath);*/
 
-        List<String> lines = Files.readAllLines(Paths.get("/main/resources/sitemap.xml"));
+        List<String> lines = Files.readAllLines(Paths.get("/sitemap.xml"));
         String content = lines.stream().collect(Collectors.joining(System.lineSeparator()));
 
 
