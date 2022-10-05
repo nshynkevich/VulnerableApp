@@ -20,10 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.*; 
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.nio.file.Path;
-import static java.nio.charset.StandardCharsets.*;
+import java.nio.*;
 
 /** @author KSASAN preetkaran20@gmail.com */
 @RestController
@@ -161,9 +158,13 @@ public class VulnerableAppRestController {
     @RequestMapping("/sitemap.xml")
     public String sitemapForPassiveScanners() throws JsonProcessingException, UnknownHostException, IOException {
 
-        Path filePath = Path.of("src/main/resources/sitemap.xml");
+        /*Path filePath = Path.of("src/main/resources/sitemap.xml");
+        String content = Files.readString(filePath);*/
 
-        String content = Files.readString(filePath);
+        List<String> lines = Files.readAllLines(Paths.get("src/main/resources/sitemap.xml"));
+        String content = lines.stream().collect(Collectors.joining(System.lineSeparator()));
+
+
         return content;
     }
 }
