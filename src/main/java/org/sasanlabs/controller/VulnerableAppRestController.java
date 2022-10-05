@@ -161,7 +161,7 @@ public class VulnerableAppRestController {
     @RequestMapping("/sitemap.xml")
     public String sitemapForPassiveScanners() throws JsonProcessingException, UnknownHostException, IOException {
 
-        Path filePath = Path.of("./sitemap.xml");
+        Path filePath = Path.of("src/main/resources/sitemap.xml");
 
         String content = Files.readString(filePath);
         return content;
