@@ -160,14 +160,18 @@ public class VulnerableAppRestController {
 
     @RequestMapping("/sitemap.xml")
     public String sitemapForPassiveScanners() throws JsonProcessingException, UnknownHostException, IOException {
+        try {
+            /*Path filePath = Path.of("src/main/resources/sitemap.xml");
+            String content = Files.readString(filePath);*/
 
-        /*Path filePath = Path.of("src/main/resources/sitemap.xml");
-        String content = Files.readString(filePath);*/
-
-        List<String> lines = Files.readAllLines(Paths.get("/var/lib/jenkins/workspace/vulnapp-deploy-k8s/src/main/resources/sitemap.xml"));
-        String content = lines.stream().collect(Collectors.joining(System.lineSeparator()));
+            List<String> lines = Files.readAllLines(Paths.get("/sitemap.xml"));
+            String content = lines.stream().collect(Collectors.joining(System.lineSeparator()));
 
 
-        return content;
+            return content;
+        } catch (IOException | JsonProcessingException | UnknownHostException e) {
+            e.printStackTrace();
+            return "";
+        } 
     }
 }
