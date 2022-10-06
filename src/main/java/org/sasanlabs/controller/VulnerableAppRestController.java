@@ -169,7 +169,7 @@ public class VulnerableAppRestController {
 
 
             return content;
-        } catch (IOException | JsonProcessingException | UnknownHostException e) {
+        } catch (JsonProcessingException | UnknownHostException e) {
             e.printStackTrace();
             return "";
         } 
